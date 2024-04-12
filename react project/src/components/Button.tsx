@@ -1,7 +1,7 @@
 
 interface Label {
     //children?:string;
-    color?: "danger" | "secondary" | "primary";
+    color?: "danger" | "secondary" | "primary" | "success";
     onClick:() => void;
 }
 
