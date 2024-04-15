@@ -12,7 +12,7 @@ const Card: React.FC<CardProps> = ({ role, title, desc, backgroundColor, btnText
         {desc}
         </p>
         <Link
-        to="/jobs"
+        to="/add-job"
         className="inline-block bg-black text-white rounded-lg px-4 py-2 hover:bg-gray-700"
         >
          {btnText}

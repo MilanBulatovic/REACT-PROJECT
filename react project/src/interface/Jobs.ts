@@ -3,7 +3,7 @@ export interface Root {
   }
   
   export interface Job {
-    id: string
+    id?: string
     title: string
     type: string
     description: string
