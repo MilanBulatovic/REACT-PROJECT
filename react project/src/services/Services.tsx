@@ -1,6 +1,8 @@
 import { Job } from "../interface/Jobs";
 
 const apiURl= 'http://127.0.0.1:8000'
+const fetchAllJobs= `${apiURl}/jobs`
+const fetchJobsApi= `${apiURl}/jobs?_limit=3`
 
   // Add job
   const addJob = async (newJob: Job): Promise<void> => {
@@ -36,5 +38,31 @@ const apiURl= 'http://127.0.0.1:8000'
     if (!res) return;
   };
 
+  // Login
+  const loginAction = async () => {
+    console.log('test');
+    return;
+  }
+
+  const fetchJobs = async (isHome, setJobs, setLoading) => {
+
+   
+      const apiUrl = isHome ? fetchJobsApi : fetchAllJobs;
+      //console.log(apiUrl);
+      
+      try {
+        const res = await fetch(apiUrl);
+        const data = await res.json();
+
+        setJobs(data);
+        
+      } catch (error) {
+        console.log('error', error);
+        
+      } finally {
+        setLoading(false);
+      }
+  }
+
   
-  export { addJob, deleteJob, editJob };
+  export { addJob, deleteJob, editJob, loginAction, fetchJobs};

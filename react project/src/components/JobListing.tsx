@@ -2,6 +2,7 @@ import { Job } from '../interface/Jobs';
 import {useState, useEffect} from 'react'
 import JobSingle from './JobSingle'
 import { ClipLoader } from 'react-spinners';
+import { fetchJobs } from '../services/Services';
 
 const JobListing = ({isHome = false}) => {
 
@@ -9,24 +10,7 @@ const JobListing = ({isHome = false}) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchjobs = async () => {
-      const apiUrl = isHome ? 'http://127.0.0.1:8000/jobs?_limit=3' : 'http://127.0.0.1:8000/jobs';
-      //console.log(apiUrl);
-      
-      try {
-        const res = await fetch(apiUrl);
-        const data = await res.json();
-
-        setJobs(data);
-        
-      } catch (error) {
-        console.log('error', error);
-        
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchjobs();
+    fetchJobs(isHome, setJobs, setLoading )
   }, [])
 
   //const jobListings = isHome ? jobsData.jobs.slice(0,3) : jobsData.jobs ;

@@ -126,7 +126,7 @@ const JobSingle = ({ deleteJob }: { deleteJob: (id: string) => Promise<void> }) 
   )
 }
 
-//fetch data using DataLoader on Route - same as Resolver in Angular
+//fetch data using DataLoader on Route
 const jobLoader: LoaderFunction<Job> = async({ params })=> {
     const res = await fetch(`http://127.0.0.1:8000/jobs/${params.id}`);
     const data = await res.json();
